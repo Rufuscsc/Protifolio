@@ -5,7 +5,7 @@ import Image from "next/image";
 const Work = () => {
   return (
     <div id="work" className="w-full px-[12%] py-20 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-Ovo">My Works</h4>
+      <h4 className="text-center mb-2 text-lg font-Ovo">My Portfolio</h4>
       <h2 className="text-center text-5xl font-Ovo">My latest work</h2>
 
       <p className="text-center max-w-2x1 mx-auto mt-5 mb-12 font-Ovo">
