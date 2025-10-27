@@ -12,7 +12,7 @@ const Service = () => {
         I am a skilled web developer with expertise in creating responsive and
         user-friendly websites.
       </p>
-      <div className="grid grid-cols-4 gap-6 my-10">
+      <div className="grid grid-cols-auto gap-6 my-10">
         {serviceData.map(({ icon, title, description, link }, index) => (
           <div
             key={index}
