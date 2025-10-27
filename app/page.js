@@ -3,7 +3,8 @@ import About from "./Components/About";
 import Header from "./Components/header";
 import Navbar from "./Components/Navbar";
 import Service from "./Components/Service";
-
+import Work from "./Components/Work";
+import Contact from "./Components/Contact";
 export default function Home() {
   return (
     <>
@@ -11,6 +12,8 @@ export default function Home() {
       <Header />
       <About />
       <Service />
+      <Work />
+      <Contact />
     </>
   );
 }
