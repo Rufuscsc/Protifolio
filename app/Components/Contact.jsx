@@ -1,10 +1,12 @@
+import { assets } from "@/assets/assets";
+import Image from "next/image";
 import React from "react";
 
 const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-full px-[12%] py-20 scroll-mt-20 bg--background-image-footer-color bg-no-repeat bg-center bg-[length:90%_auto]"
+      className="w-full px-[12%] py-20 scroll-mt-20 bg-footer-color bg-no-repeat bg-center bg-[length:90%_auto]"
     >
       <h4 className="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
       <h2 className="text-center text-5xl font-Ovo">Get in touch</h2>
@@ -36,9 +38,10 @@ const Contact = () => {
         ></textarea>
         <button
           type="submit"
-          className="w-max flex ite,s-center justify-between gap-2 bg-black/80 text-white py-3 px-8 rounded-full mx-auto hover:bg-black duration-500"
+          className="w-max flex items-center justify-between gap-2 bg-black/80 text-white py-3 px-8 rounded-full mx-auto hover:bg-black duration-500"
         >
-          Submit now
+          Submit now{" "}
+          <Image src={assets.right_arrow_white} alt="" className="w-4" />
         </button>
       </form>
     </div>
