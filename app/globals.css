@@ -1,9 +1,11 @@
 @import "tailwindcss";
 
+/* Set your font globally */
 * {
   font-family: Outfit;
 }
 
+/* Define light theme variables (default) */
 @theme {
   /* Colors */
   --color-light-hover: #fcf4ff;
@@ -18,7 +20,49 @@
   --shadow-black: 4px 4px 0 #000;
   --shadow-white: 4px 4px 0 #fff;
 
+  /* Grid */
   --grid-template-columns-auto: repeat(auto-fit, minmax(200px, 1fr));
 
+  /* Backgrounds */
   --background-image-footer-color: url("/footer-bg-color.png");
+}
+
+/* ✅ DARK MODE SELECTOR */
+@layer base {
+  :root {
+    /* Define Navbar Background for Light Mode here (White 50% opacity) */
+    --nav-bg: rgba(255, 255, 255, 0.5);
+    /* ✅ NEW: Menu Pill Variables (Light Mode) */
+    --menu-bg: rgba(255, 255, 255, 0.5);
+    --menu-border: transparent; /* Border exists but is invisible */
+  }
+
+  html.dark {
+    --nav-bg: var(--color-dark-theme);
+
+    /* ✅ NEW: Menu Pill Variables (Dark Mode) */
+    --menu-bg: transparent;
+    --menu-border: rgba(255, 255, 255, 0.5);
+
+    /* Override your color system for dark mode */
+    --color-light-hover: #fcf4ff; /* swap hover colors */
+    --color-dark-hover: #2a004a;
+    --color-dark-theme: #11001f;
+
+    --shadow-black: 4px 4px 0 #000;
+    --shadow-white: 4px 4px 0 #fff;
+
+    background-color: var(--color-dark-theme);
+    color: #ffffff;
+  }
+  /* global.css */
+  @layer utilities {
+    html.dark .dark\:hidden {
+      display: none !important;
+    }
+
+    html.dark .dark\:block {
+      display: block !important;
+    }
+  }
 }
