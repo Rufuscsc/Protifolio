@@ -2,11 +2,15 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ isDarkMode }) => {
   return (
     <div className="mt-20">
       <div className="text-center">
-        <Image src={assets.logo} alt="" className="w-36 mx-auto mb-z" />
+        <Image
+          src={isDarkMode ? assets.logo_dark : assets.logo}
+          alt=""
+          className="w-36 mx-auto mb-z"
+        />
 
         <div className="w-max flex items-center gap-2 mx-auto">
           <Image src={assets.mail_icon} alt="" className="w-6" />

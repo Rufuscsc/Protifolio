@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useState } from "react";
 
-const Contact = () => {
+const Contact = ({ isDarkMode }) => {
   const [result, setResult] = useState("");
 
   const onSubmit = async (event) => {
@@ -31,7 +31,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="w-full px-[12%] py-20 scroll-mt-20 bg-footer-color bg-no-repeat bg-center bg-[length:90%_auto]"
+      className='w-full px-[12%] py-20 scroll-mt-20 bg-[url("/footer-bg-color.png")] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none'
     >
       <h4 className="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
       <h2 className="text-center text-5xl font-Ovo">Get in touch</h2>
@@ -46,14 +46,22 @@ const Contact = () => {
             type="text"
             placeholder="Enter Your Name"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white"
+            className={`flex-1 p-3 outline-none border-[0.5px] rounded-md ${
+              isDarkMode
+                ? "bg-dark-hover/30 border-white/90"
+                : "bg-white border-gray-400"
+            }`}
             name="name"
           />
           <input
             type="email"
             placeholder="Enter Your Email"
             required
-            className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white"
+            className={`flex-1 p-3 outline-none border-[0.5px] rounded-md ${
+              isDarkMode
+                ? "bg-dark-hover/30 border-white/90"
+                : "bg-white border-gray-400"
+            }`}
             name="email"
           />
         </div>
@@ -61,12 +69,20 @@ const Contact = () => {
           rows="6"
           placeholder="Enter Your Message"
           required
-          className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6"
+          className={`w-full p-4 outline-none border-[0.5px] rounded-md mb-6 ${
+            isDarkMode
+              ? "bg-dark-hover/30 border-white/90"
+              : "bg-white border-gray-400"
+          }`}
           name="message"
         ></textarea>
         <button
           type="submit"
-          className="w-max flex items-center justify-between gap-2 bg-black/80 text-white py-3 px-8 rounded-full mx-auto hover:bg-black duration-500"
+          className={`w-max flex items-center justify-between gap-2 text-white py-3 px-8 rounded-full mx-auto duration-500 ${
+            isDarkMode
+              ? "bg-transparent border-[0.5px] hover:bg-dark-hover"
+              : "bg-black/80 hover:bg-black"
+          }`}
         >
           Submit now{" "}
           <Image src={assets.right_arrow_white} alt="" className="w-4" />
