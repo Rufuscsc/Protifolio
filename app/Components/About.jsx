@@ -2,7 +2,7 @@ import { assets, infoList, toolsData } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 
-const About = () => {
+const About = ({ isDarkMode }) => {
   return (
     <div id="about" className="w-full px-[12%] py-20 scroll-mt-20">
       <h4 className="text-center mb-2 text-lg font-Ovo">Introduction</h4>
@@ -26,16 +26,36 @@ const About = () => {
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <li
-                className="border-[0.5px] border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-light-hover hover:-translate-y-2 duration-400 hover:shadow-black"
+                className={`border-[0.5px] rounded-xl p-6 cursor-pointer hover:-translate-y-2 transition-all duration-500 ${
+                  isDarkMode
+                    ? "border-white hover:shadow-white hover:bg-dark-hover/50"
+                    : "border-gray-400 hover:shadow-black hover:bg-light-hover"
+                }`}
                 key={index}
               >
-                <Image src={icon} alt={title} className="w-7 mt-3" />
-                <h3 className="my-4 font-semibold text-gray-700">{title}</h3>
-                <p className="text-gray-600 text-sm">{description}</p>
+                <Image
+                  src={isDarkMode ? iconDark : icon}
+                  alt={title}
+                  className="w-7 mt-3"
+                />
+                <h3
+                  className={`my-4 font-semibold ${isDarkMode ? "text-white" : "text-gray-700"}`}
+                >
+                  {title}
+                </h3>
+                <p
+                  className={`text-sm ${isDarkMode ? "text-white/80" : "text-gray-600"}`}
+                >
+                  {description}
+                </p>
               </li>
             ))}
           </ul>
-          <h4 className="my-6 text-gray-700 font-Ovo">Tools I use </h4>
+          <h4
+            className={`my-6 font-Ovo ${isDarkMode ? "text-white" : "text-gray-700"}`}
+          >
+            Tools I use{" "}
+          </h4>
           <ul className="flex items-center gap-3 sm:gap-5">
             {toolsData.map((tool, index) => (
               <li
