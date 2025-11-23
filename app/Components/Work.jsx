@@ -1,24 +1,55 @@
 import { assets, workData } from "@/assets/assets";
 import React from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 const Work = ({ isDarkMode }) => {
   return (
-    <div id="work" className="w-full px-[12%] py-20 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-Ovo">My Portfolio</h4>
-      <h2 className="text-center text-5xl font-Ovo">My latest work</h2>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      id="work"
+      className="w-full px-[12%] py-20 scroll-mt-20"
+    >
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        className="text-center mb-2 text-lg font-Ovo"
+      >
+        My Portfolio
+      </motion.h4>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="text-center text-5xl font-Ovo"
+      >
+        My latest work
+      </motion.h2>
 
-      <p className="text-center max-w-2x1 mx-auto mt-5 mb-12 font-Ovo">
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="text-center max-w-2x1 mx-auto mt-5 mb-12 font-Ovo"
+      >
         Welcome to my web development portfolio! Explore a collection of
         projects showcasing my expertise in front-end development
-      </p>
-      <div
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
         className={`grid grid-cols-auto my-10 gap-5 ${
           isDarkMode ? "text-black" : ""
         }`}
       >
         {workData.map((project, index) => (
-          <div
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
             key={index}
             className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
           >
@@ -32,10 +63,13 @@ const Work = ({ isDarkMode }) => {
                 <Image src={assets.send_icon} alt="send icon" className="w-5" />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-      <a
+      </motion.div>
+      <motion.a
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.1 }}
         href=""
         className={`w-max flex items-center justify-center gap-2 rounded-full py-3 px-10 mx-auto my-20 border-[0.5px] duration-500 ${
           isDarkMode
@@ -51,8 +85,8 @@ const Work = ({ isDarkMode }) => {
           alt="Right arrow"
           className="w-4"
         />
-      </a>
-    </div>
+      </motion.a>
+    </motion.div>
   );
 };
 

@@ -2,17 +2,15 @@ import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React from "react";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 const Contact = ({ isDarkMode }) => {
   const [result, setResult] = useState("");
-
   const onSubmit = async (event) => {
     event.preventDefault();
     setResult("Sending....");
     const formData = new FormData(event.target);
-
     formData.append("access_key", "7e54a302-a0cb-4e9b-80cf-aa119f51d9a3");
-
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       body: formData,
@@ -29,20 +27,51 @@ const Contact = ({ isDarkMode }) => {
     }
   };
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
       id="contact"
       className='w-full px-[12%] py-20 scroll-mt-20 bg-[url("/footer-bg-color.png")] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none'
     >
-      <h4 className="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
-      <h2 className="text-center text-5xl font-Ovo">Get in touch</h2>
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center mb-2 text-lg font-Ovo"
+      >
+        Connect with me
+      </motion.h4>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="text-center text-5xl font-Ovo"
+      >
+        Get in touch
+      </motion.h2>
 
-      <p className="text-center max-w-2x1 mx-auto mt-5 mb-12 font-Ovo">
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="text-center max-w-2x1 mx-auto mt-5 mb-12 font-Ovo"
+      >
         I'd love to hear from you! If you have any questions, comments, or
         feedback, please use the form below.
-      </p>
-      <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
+      </motion.p>
+      <motion.form
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        onSubmit={onSubmit}
+        className="max-w-2xl mx-auto"
+      >
         <div className="grid grid-cols-auto gap-6 mt-10 mb-8">
-          <input
+          <motion.input
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
             type="text"
             placeholder="Enter Your Name"
             required
@@ -53,7 +82,10 @@ const Contact = ({ isDarkMode }) => {
             }`}
             name="name"
           />
-          <input
+          <motion.input
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
             type="email"
             placeholder="Enter Your Email"
             required
@@ -65,7 +97,10 @@ const Contact = ({ isDarkMode }) => {
             name="email"
           />
         </div>
-        <textarea
+        <motion.textarea
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.3 }}
           rows="6"
           placeholder="Enter Your Message"
           required
@@ -75,8 +110,10 @@ const Contact = ({ isDarkMode }) => {
               : "bg-white border-gray-400"
           }`}
           name="message"
-        ></textarea>
-        <button
+        ></motion.textarea>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
           type="submit"
           className={`w-max flex items-center justify-between gap-2 text-white py-3 px-8 rounded-full mx-auto duration-500 ${
             isDarkMode
@@ -86,10 +123,10 @@ const Contact = ({ isDarkMode }) => {
         >
           Submit now{" "}
           <Image src={assets.right_arrow_white} alt="" className="w-4" />
-        </button>
+        </motion.button>
         <p className="text-center mt-4 font-Ovo">{result}</p>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 
